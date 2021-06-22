@@ -19,7 +19,7 @@ export const styles = StyleSheet.create({
   title: {
     color: theme.colors.heading,
     textAlign: 'center',
-    fontSize: 40,
+    fontSize: 30,
     marginBottom: 16
   },
   subtitle: {
