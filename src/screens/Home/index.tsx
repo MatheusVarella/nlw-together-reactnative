@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, FlatList, Text } from "react-native"; // FlatList é utilizado no lugar da ScrollView quando serão muitos elementos
+import { View, FlatList } from "react-native"; // FlatList é utilizado no lugar da ScrollView quando serão muitos elementos
 
 import { CategorySelect } from "../../components/CategorySelect";
 import { ButtonAdd } from "../../components/ButtonAdd";
@@ -57,12 +57,16 @@ export function Home() {
   function handleAppointmentDetails() {
     navigation.navigate('AppointmentDetails');
   }
+  
+  function handleAppointmentCreate() {
+    navigation.navigate('AppointmentCreate');
+  }
 
   return(
     <Background>
       <View style={styles.header}>
         <Profile />
-        <ButtonAdd />
+        <ButtonAdd onPress={handleAppointmentCreate} />
       </View>
 
         <CategorySelect 
