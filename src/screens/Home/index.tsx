@@ -10,9 +10,12 @@ import { ListDivider } from "../../components/ListDivider";
 import { styles } from "./styles";
 import { Appointment } from "../../components/Appointment";
 import { Background } from "../../components/Background";
+import { useNavigation } from "@react-navigation/native";
 
 export function Home() {
   const [category, setCategory] = useState(' ');
+
+  const navigation = useNavigation(); // Para utilizar a navegação
 
   const appoinments = [
     {
@@ -51,6 +54,10 @@ export function Home() {
     */ 
   } // Para marcar e desmarcar um elemento
 
+  function handleAppointmentDetails() {
+    navigation.navigate('AppointmentDetails');
+  }
+
   return(
     <Background>
       <View style={styles.header}>
@@ -72,7 +79,10 @@ export function Home() {
               data={appoinments}
               keyExtractor={item => item.id} // Lida com id automaticamente
               renderItem={({ item }) => (
-              <Appointment data={item}/>
+              <Appointment 
+                data={item}
+                onPress={handleAppointmentDetails}
+              />
             )}
               ItemSeparatorComponent={() => <ListDivider />} // declaro como elemento divisor de lista
               style={styles.matches}
