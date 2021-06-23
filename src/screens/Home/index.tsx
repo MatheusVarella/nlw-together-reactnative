@@ -9,6 +9,7 @@ import { ListDivider } from "../../components/ListDivider";
 
 import { styles } from "./styles";
 import { Appointment } from "../../components/Appointment";
+import { Background } from "../../components/Background";
 
 export function Home() {
   const [category, setCategory] = useState(' ');
@@ -51,7 +52,7 @@ export function Home() {
   } // Para marcar e desmarcar um elemento
 
   return(
-    <View>
+    <Background>
       <View style={styles.header}>
         <Profile />
         <ButtonAdd />
@@ -78,6 +79,6 @@ export function Home() {
               showsVerticalScrollIndicator={false}
           />         
         </View>
-    </View>
+    </Background>
   );
 }
