@@ -13,11 +13,12 @@ import { theme } from "../../global/styles/theme";
 import BannerImg from "../../assets/banner.png";
 import { styles } from "./styles";
 
+import { ListDivider } from "../../components/ListDivider";
 import { Background } from "../../components/Background";
 import { ListHeader } from "../../components/ListHeader";
+import { ButtonIcon } from "../../components/ButtonIcon";
 import { Header } from "../../components/Header";
 import { Member } from "../../components/Member";
-import { ListDivider } from "../../components/ListDivider";
 
 export function AppointmentDetails() {
   const members = [
@@ -28,7 +29,7 @@ export function AppointmentDetails() {
       status: 'Online'
     },
     {
-      id: '1',
+      id: '2',
       username: 'Matheus',
       avatar_url: 'https://github.com/MatheusVarella.png',
       status: 'Ocupado'
@@ -68,7 +69,7 @@ export function AppointmentDetails() {
       subtitle="Total 3"
      />
 
-     <FlatList
+    <FlatList
       data= {members}
       keyExtractor={item => item.id}
       renderItem={({ item }) => (
@@ -76,8 +77,11 @@ export function AppointmentDetails() {
       )}
       ItemSeparatorComponent={() => <ListDivider />}
       style={styles.members}
-     >
-     </FlatList>
+    >
+    </FlatList>
+    <View style={styles.footer}>
+      <ButtonIcon title="Entrar na partida" />
+    </View>
     </Background>        
   );
 }
