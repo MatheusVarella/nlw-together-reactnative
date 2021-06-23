@@ -1,7 +1,8 @@
 import React, { ReactNode } from "react";
 import { LinearGradient } from "expo-linear-gradient";
-import { BorderlessButton } from "react-native-gesture-handler";
+import { BorderlessButton } from "react-native-gesture-handler"; // botão indicado para quando não tem texto no botão
 import { Feather } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 
 import { View, Text } from "react-native";
 
@@ -17,12 +18,18 @@ interface Props {
 export function Header({ title, action}: Props ) {
   const { secondary40, secondary100, heading } = theme.colors;
   
+  const navigation = useNavigation();
+
+  function handleGoBack() {
+    navigation.goBack(); // função para voltar a tela anterior
+  }
+
   return (
     <LinearGradient
       style={styles.container} 
       colors={[secondary100, secondary40]}
     >
-      <BorderlessButton>
+      <BorderlessButton onPress={handleGoBack}> 
         <Feather 
           name="arrow-left"
           size={24}
