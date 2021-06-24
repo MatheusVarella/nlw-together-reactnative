@@ -78,7 +78,9 @@ export function Guilds({ handleGuildSelect }: Props){
           />
         )}
         showsVerticalScrollIndicator={false} // Tirar a barrinha lateral
-        ItemSeparatorComponent={() => <ListDivider />}
+        ItemSeparatorComponent={() => <ListDivider isCentered />}
+        ListHeaderComponent={() => <ListDivider isCentered />}
+        contentContainerStyle={{ paddingBottom: 68, paddingTop: 104}}
         style={styles.guilds}
       />
     </View>
