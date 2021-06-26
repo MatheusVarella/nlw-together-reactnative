@@ -2,9 +2,9 @@ import React from "react";
 import { 
   View,
   Text,
-  Image
+  Image,
+  Alert
 } from "react-native";
-import { useNavigation } from "@react-navigation/native";
 
 import { useAuth } from "../../hooks/auth";
 
@@ -15,11 +15,14 @@ import { ButtonIcon } from "../../components/ButtonIcon";
 import { Background } from "../../components/Background";
 
 export function SignIn() {
-  const navigation = useNavigation();
-  const { user } = useAuth();
+  const { user, signIn } = useAuth();
 
-  function handleSignIn() { // função para trocar de tela
-    navigation.navigate('Home');
+  async function handleSignIn() { // função para trocar de tela
+    try {
+      await signIn();
+    } catch (error) {
+      Alert.alert(error);
+    }
   }
 
   return(
