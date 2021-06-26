@@ -3,16 +3,8 @@ import { theme } from "../../global/styles/theme";
 
 export const styles = StyleSheet.create({
   container: {
-    width: 62,
-    height: 66,
-    borderRadius: 8,
-    backgroundColor: theme.colors.discord,
-    alignItems: "center",
+    flex: 1,
     justifyContent: "center",
-    overflow: "hidden"
+    alignItems: "center"
   },
-  image: {
-    width: 62,
-    height: 66,
-  }
 });
