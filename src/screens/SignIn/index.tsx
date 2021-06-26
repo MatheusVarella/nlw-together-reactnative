@@ -3,7 +3,8 @@ import {
   View,
   Text,
   Image,
-  Alert
+  Alert,
+  ActivityIndicator
 } from "react-native";
 
 import { useAuth } from "../../hooks/auth";
@@ -13,9 +14,10 @@ import { styles } from './styles';
 
 import { ButtonIcon } from "../../components/ButtonIcon";
 import { Background } from "../../components/Background";
+import { theme } from "../../global/styles/theme";
 
 export function SignIn() {
-  const { user, signIn } = useAuth();
+  const { loading, signIn } = useAuth();
 
   async function handleSignIn() { // função para trocar de tela
     try {
@@ -46,11 +48,15 @@ export function SignIn() {
             favoritos com seus amigos 
           </Text>
 
-          <ButtonIcon 
-            title={'Entrar com o Discord'} 
-            activeOpacity={0.7}
-            onPress={handleSignIn}
-          />
+          {
+            loading ? <ActivityIndicator color={theme.colors.primary} />
+            :
+            <ButtonIcon 
+              title={'Entrar com o Discord'} 
+              activeOpacity={0.7}
+              onPress={handleSignIn}
+            />
+          }
         </View>
       </View>
     </Background>
