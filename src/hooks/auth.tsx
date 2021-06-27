@@ -17,7 +17,7 @@ const { CLIENTE_ID } = process.env;
 const { CDN_IMAGE } = process.env; 
 
 import { api } from "../services/api";
-import { COLLECTION_USER } from "../configs/database";
+import { COLLECTION_APPOINTMENT, COLLECTION_USER } from "../configs/database";
 
 interface User {
   id: string;
@@ -32,6 +32,7 @@ interface AuthContextData {
   user: User;
   loading: boolean;
   signIn: () => Promise<void>;
+  signOut: () => Promise<void>;
 }
 
 interface AuthProviderProps {
@@ -86,6 +87,11 @@ function AuthProvider({ children }:  AuthProviderProps) {
     }
   }
 
+  async function signOut() {
+    setUser({} as User);
+    await AsyncStorage.removeItem(COLLECTION_USER);
+  }
+
   async function  loadUserStorageData() {
     const storage = await AsyncStorage.getItem(COLLECTION_USER);
 
@@ -106,7 +112,8 @@ function AuthProvider({ children }:  AuthProviderProps) {
     <AuthContext.Provider value={{ 
       user,
       loading,
-      signIn
+      signIn,
+      signOut
     }}>
       { children }
     </AuthContext.Provider>
